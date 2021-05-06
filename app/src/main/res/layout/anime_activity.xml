@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressLayoutHomeId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/loading_text_home_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Loading..."
+            android:textColor="#673AB7"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/indeterminateBarHomeId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/indeterminateBarHomeId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_anime_activity_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_remove_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_anime_activity_id">
+
+        <ImageView
+            android:id="@+id/image_anime_activity_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="3"
+            app:srcCompat="?attr/selectableItemBackground" />
+
+        <ScrollView
+            android:id="@+id/scrollView_anime_activity_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_anime_activity_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/alternative_titles_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/season_anime_activity_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/warning_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="Anime Not in Your List"
+                    android:textColor="#F44336"
+                    android:textSize="18sp"
+                    android:visibility="invisible" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/gridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ToggleButton
+                            android:id="@+id/button_watching"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/check"
+                            android:button="@drawable/check"
+                            android:minWidth="0dip"
+                            android:minHeight="0dip"
+                            android:textOff="Watching"
+                            android:textOn="Watching"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/button_on_hold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:padding="4dp" />
+
+                        <ToggleButton
+                            android:id="@+id/button_dropped"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/check"
+                            android:button="@drawable/check"
+                            android:minWidth="0dip"
+                            android:minHeight="0dip"
+                            android:textOff="Dropped"
+                            android:textOn="Dropped"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/button_completed"
+                            app:layout_constraintEnd_toEndOf="@+id/button_plan_to_watch"
+                            app:layout_constraintStart_toStartOf="@+id/button_on_hold"
+                            app:layout_constraintTop_toTopOf="@+id/button_completed"
+                            tools:padding="4dp" />
+
+                        <ToggleButton
+                            android:id="@+id/button_plan_to_watch"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/check"
+                            android:button="@drawable/check"
+                            android:minWidth="0dip"
+                            android:minHeight="0dip"
+                            android:textOff="Plan to Watch"
+                            android:textOn="Plan to Watch"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/button_on_hold"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:padding="4dp" />
+
+                        <ToggleButton
+                            android:id="@+id/button_completed"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/check"
+                            android:button="@drawable/check"
+                            android:minWidth="0dip"
+                            android:minHeight="0dip"
+                            android:textOff="Completed"
+                            android:textOn="Completed"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/button_on_hold"
+                            app:layout_constraintStart_toStartOf="@+id/button_watching"
+                            app:layout_constraintTop_toBottomOf="@+id/button_watching"
+                            tools:padding="4dp" />
+
+                        <ToggleButton
+                            android:id="@+id/button_on_hold"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/check"
+                            android:button="@drawable/check"
+                            android:minWidth="0dip"
+                            android:minHeight="0dip"
+                            android:textOff="On Hold"
+                            android:textOn="On Hold"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:padding="4dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <SeekBar
+                        android:id="@+id/seekBar_episodes_anime_activity_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gridView" />
+
+                    <TextView
+                        android:id="@+id/episodes_progress_anime_activity_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center_horizontal"
+                        android:text="Episodes"
+                        app:layout_constraintEnd_toStartOf="@+id/button_plus_anime_activity_id"
+                        app:layout_constraintStart_toEndOf="@+id/button_minus_anime_activity_id"
+                        app:layout_constraintTop_toBottomOf="@+id/seekBar_episodes_anime_activity_id" />
+
+                    <Button
+                        android:id="@+id/button_plus_anime_activity_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="0dip"
+                        android:minHeight="24dip"
+                        android:text="+"
+                        app:layout_constraintBottom_toBottomOf="@+id/episodes_progress_anime_activity_id"
+                        app:layout_constraintEnd_toEndOf="@+id/seekBar_episodes_anime_activity_id"
+                        app:layout_constraintTop_toTopOf="@+id/episodes_progress_anime_activity_id" />
+
+                    <Button
+                        android:id="@+id/button_minus_anime_activity_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="0dip"
+                        android:minHeight="24dip"
+                        android:text="-"
+                        app:layout_constraintBottom_toBottomOf="@+id/episodes_progress_anime_activity_id"
+                        app:layout_constraintStart_toStartOf="@+id/seekBar_episodes_anime_activity_id"
+                        app:layout_constraintTop_toTopOf="@+id/episodes_progress_anime_activity_id" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar_score_anime_activity_id"
+                        style="@style/Widget.AppCompat.SeekBar.Discrete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:max="10"
+                        android:progress="0"
+                        app:layout_constraintEnd_toEndOf="@+id/seekBar_episodes_anime_activity_id"
+                        app:layout_constraintStart_toStartOf="@+id/seekBar_episodes_anime_activity_id"
+                        app:layout_constraintTop_toBottomOf="@+id/button_minus_anime_activity_id" />
+
+                    <TextView
+                        android:id="@+id/my_score_anime_activity_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="My Score: -"
+                        app:layout_constraintEnd_toEndOf="@+id/seekBar_score_anime_activity_id"
+                        app:layout_constraintStart_toStartOf="@+id/seekBar_score_anime_activity_id"
+                        app:layout_constraintTop_toBottomOf="@+id/seekBar_score_anime_activity_id" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/episodes_anime_activity_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Episodes:" />
+
+                            <TextView
+                                android:id="@+id/score_anime_activity_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Score:" />
+
+                            <TextView
+                                android:id="@+id/status_anime_activity_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Status:" />
+
+                            <TextView
+                                android:id="@+id/rating_anime_activity_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Rating:" />
+
+                            <TextView
+                                android:id="@+id/source_anime_activity_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Source:" />
+
+                            <TextView
+                                android:id="@+id/media_type_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Media Type:" />
+
+                            <TextView
+                                android:id="@+id/episode_duration_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="Episode Duration:" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/episodes_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/score_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/status_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/rating_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/source_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/media_type_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/episode_duration_value_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/custom_table_linear_layout"
+                                android:gravity="end"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                android:text="-" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp" />
+
+                <TextView
+                    android:id="@+id/genres_text_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:gravity="center_horizontal"
+                    android:text="Genres"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/genres_value_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:text="-" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp" />
+
+                <TextView
+                    android:id="@+id/synopsis_anime_activity_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Synopsis"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/synopsis_value_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Related Anime"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_anime_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_remove_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FFFFFF"
+        android:minHeight="0dip"
+        android:padding="8dp"
+        android:text="Remove"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_remove_dark"
+        app:iconTint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
