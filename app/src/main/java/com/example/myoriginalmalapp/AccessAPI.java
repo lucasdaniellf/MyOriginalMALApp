@@ -35,7 +35,7 @@ public class AccessAPI
     private String refresh_token = "";
 
     private final String url = "https://api.myanimelist.net";
-    private final String client_id = "8c03cdd050345c5739003aafad4a3103";
+    private final String client_id = "";
 
     public String getUrl() {
         return url;
